@@ -1,0 +1,17 @@
+{
+  "name": "mern1",
+  "version": "1.0.0",
+  "description": "M.E.R.N Web Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MERN",
+    "React",
+    "Node",
+    "JavaScript"
+  ],
+  "author": "Ion Munteanu",
+  "license": "ISC"
+}
