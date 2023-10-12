@@ -1,17 +1,45 @@
 {
-  "name": "mern1",
-  "version": "1.0.0",
-  "description": "M.E.R.N Web Application",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "MERN",
-    "React",
-    "Node",
-    "JavaScript"
-  ],
-  "author": "Ion Munteanu",
-  "license": "ISC"
+    "name": "mern1",
+    "version": "1.0.0",
+    "description": "M.E.R.N Web Application",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "setup-project": "npm i && cd client && npm i",
+        "server": "nodemon server",
+        "client": "cd client && npm run dev",
+        "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
+    },
+    "keywords": [
+        "MERN",
+        "React",
+        "Node",
+        "JavaScript"
+    ],
+    "author": "Ion Munteanu",
+    "license": "ISC",
+    "devDependencies": {
+        "axios": "^1.5.1",
+        "bcryptjs": "^2.4.3",
+        "cloudinary": "^1.41.0",
+        "concurrently": "^8.2.1",
+        "cookie-parser": "^1.4.6",
+        "datauri": "^4.1.0",
+        "dayjs": "^1.11.10",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-async-errors": "^3.1.1",
+        "express-mongo-sanitize": "^2.2.0",
+        "express-rate-limit": "^7.1.1",
+        "express-validator": "^7.0.1",
+        "helmet": "^6.2.0",
+        "http-status-codes": "^2.3.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^7.6.1",
+        "morgan": "^1.10.0",
+        "multer": "1.4.5-lts.1",
+        "nanoid": "^5.0.1",
+        "nodemon": "^3.0.1",
+        "supertest": "^6.3.3"
+    }
 }
