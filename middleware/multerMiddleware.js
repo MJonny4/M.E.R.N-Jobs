@@ -1,17 +1,15 @@
-import path from path;
-
 import multer from "multer";
 import DataParser from "datauri/parser.js";
+import path from "path";
 
-const storage = multer.diskStorage();
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 const parser = new DataParser();
 
 export const formatImage = (file) => {
-    const ext = path.extname(file.originalname).toString();
-    const data = parser.format(ext, file.buffer);
-    return data.content;
-}
+    const fileExtension = path.extname(file.originalname).toString();
+    return parser.format(fileExtension, file.buffer).content;
+};
 
 export default upload;
