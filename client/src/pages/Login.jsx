@@ -10,26 +10,29 @@ import {
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
-export const action = async ({ request }) => {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
+export const action =
+    (queryClient) =>
+    async ({ request }) => {
+        const formData = await request.formData();
+        const data = Object.fromEntries(formData);
 
-    /* Optional */
-    /* const errors = {msg: ""};
+        /* Optional */
+        /* const errors = {msg: ""};
     if (data.password.length < 8) {
         errors.msg = "Password must be at least 8 characters long mf!";
         return errors;
     } */
 
-    try {
-        await customFetch.post("/auth/login", data);
-        toast.success("Logged in successfully!");
-        return redirect("/dashboard");
-    } catch (error) {
-        toast.error(error?.response?.data?.msg || error.msg);
-        return error;
-    }
-};
+        try {
+            await customFetch.post("/auth/login", data);
+            queryClient.invalidateQueries();
+            toast.success("Logged in successfully!");
+            return redirect("/dashboard");
+        } catch (error) {
+            toast.error(error?.response?.data?.msg || error.msg);
+            return error;
+        }
+    };
 
 const Login = () => {
     /* const errors = useActionData(); */
