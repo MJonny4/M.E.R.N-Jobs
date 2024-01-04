@@ -26,4 +26,4 @@ dist-ssr
 # IDE - VSCode
 .vscode/*
 .env
-.package-lock.json
+package-lock.json
