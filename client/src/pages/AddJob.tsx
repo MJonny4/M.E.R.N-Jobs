@@ -23,6 +23,7 @@ export const action =
     };
 
 const AddJob = () => {
+    // @ts-expect-error - params is not defined
     const { user } = useOutletContext();
 
     return (

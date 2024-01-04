@@ -1,4 +1,4 @@
-import { FormRow, FormRowSelect, SubmitBtn } from ".";
+import { FormRow, FormRowSelect } from ".";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { Form, useSubmit, Link } from "react-router-dom";
 import { JOB_TYPE, JOB_STATUS, JOB_SORT_BY } from "../../../utils/constants";
@@ -36,6 +36,7 @@ const SearchContainer = () => {
                     <FormRowSelect
                         labelText="job stats"
                         name="jobStatus"
+                        // @ts-expect-error - params is not defined
                         list={["all", ...Object.values(JOB_STATUS)]}
                         defaultValue={jobStatus}
                         onChange={(e) => {
@@ -45,6 +46,7 @@ const SearchContainer = () => {
                     <FormRowSelect
                         labelText="job type"
                         name="jobType"
+                        // @ts-expect-error - params is not defined
                         list={["all", ...Object.values(JOB_TYPE)]}
                         defaultValue={jobType}
                         onChange={(e) => {

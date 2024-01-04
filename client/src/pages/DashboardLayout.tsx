@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Wrapper from "../assets/wrappers/Dashboard";
 import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
 import { BigSidebar, Navbar, SmallSidebar } from "../components";
@@ -25,7 +24,7 @@ export const loader = (queryClient) => async () => {
     }
 };
 
-const DashboardContext = createContext();
+const DashboardContext = createContext(null);
 
 const DashboardLayout = ({ queryClient }) => {
     const { user } = useQuery(userQuery).data;
@@ -42,7 +41,7 @@ const DashboardLayout = ({ queryClient }) => {
         const newDarkTheme = !isDarkTheme;
         setIsDarkTheme(newDarkTheme);
         document.body.classList.toggle("dark-theme", newDarkTheme);
-        localStorage.setItem("darkTheme", newDarkTheme);
+        localStorage.setItem("darkTheme", String(newDarkTheme));
     };
 
     const toggleSidebar = () => {

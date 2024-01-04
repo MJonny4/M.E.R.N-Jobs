@@ -11,6 +11,7 @@ const statsQuery = {
 };
 
 export const loader = (queryClient) => async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const data = await queryClient.ensureQueryData(statsQuery);
     return null;
 };

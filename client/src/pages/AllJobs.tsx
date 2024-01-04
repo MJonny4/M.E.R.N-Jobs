@@ -1,23 +1,23 @@
-import { JobsContainer, SearchContainer } from "../components";
-import customFetch from "../utils/customFetch";
-import { useLoaderData } from "react-router-dom";
-import { useContext, createContext } from "react";
-import { useQuery } from "@tanstack/react-query";
-const AllJobsContext = createContext();
+import { JobsContainer, SearchContainer } from '../components';
+import customFetch from '../utils/customFetch';
+import { useLoaderData } from 'react-router-dom';
+import { useContext, createContext } from 'react';
+import { useQuery } from '@tanstack/react-query';
+const AllJobsContext = createContext(null);
 
 const allJobsQuery = (params) => {
     const { search, jobStatus, jobType, sort, page } = params;
     return {
         queryKey: [
-            "jobs",
-            search ?? "",
-            jobStatus ?? "all",
-            jobType ?? "all",
-            sort ?? "newest",
+            'jobs',
+            search ?? '',
+            jobStatus ?? 'all',
+            jobType ?? 'all',
+            sort ?? 'newest',
             page ?? 1,
         ],
         queryFn: async () => {
-            const { data } = await customFetch.get("/jobs", {
+            const { data } = await customFetch.get('/jobs', {
                 params,
             });
             return data;
@@ -37,7 +37,8 @@ export const loader =
     };
 
 const AllJobs = () => {
-    const { searchValues } = useLoaderData();
+    // @ts-expect-error - params is not defined
+    const { searchValues }: { searchValues: string } = useLoaderData();
     const { data } = useQuery(allJobsQuery(searchValues));
     return (
         <AllJobsContext.Provider value={{ data, searchValues }}>

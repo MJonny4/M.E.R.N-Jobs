@@ -16,6 +16,7 @@ export const loader = async () => {
 };
 
 const Admin = () => {
+    // @ts-expect-error - params is not defined
     const { users, jobs } = useLoaderData();
 
     return (

@@ -27,8 +27,20 @@ export const action =
         return null;
     };
 
+type TUser = {
+    name?: string;
+    lastName?: string;
+    email?: string;
+    location?: string;
+};
+
 const Profile = () => {
-    const { user } = useOutletContext();
+    type OutletContextType = {
+        user: TUser; // Add the 'user' property with the appropriate type
+    };
+
+    const { user } = useOutletContext<OutletContextType>(); // Update the type of useOutletContext
+
     const { name, lastName, email, location } = user;
 
     return (

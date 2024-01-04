@@ -1,29 +1,34 @@
-import PropTypes from "prop-types";
+type FormRowProps = {
+    type: string;
+    name: string;
+    labelText?: string;
+    defaultValue?: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
-const FormRow = ({ type, name, labelText, defaultValue, onChange }) => {
+const FormRow = ({
+    type,
+    name,
+    labelText,
+    defaultValue,
+    onChange,
+}: FormRowProps) => {
     return (
-        <div className="form-row">
-            <label htmlFor={name} className="form-label">
+        <div className='form-row'>
+            <label htmlFor={name} className='form-label'>
                 {labelText || name}
             </label>
             <input
                 type={type}
                 id={name}
                 name={name}
-                className="form-input"
-                defaultValue={defaultValue || ""}
+                className='form-input'
+                defaultValue={defaultValue || ''}
                 onChange={onChange}
                 required
             />
         </div>
     );
-};
-
-FormRow.propTypes = {
-    type: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    labelText: PropTypes.string,
-    defaultValue: PropTypes.string,
 };
 
 export default FormRow;

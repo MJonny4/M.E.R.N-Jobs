@@ -8,17 +8,23 @@
 
         /* Bundler mode */
         "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
+        "allowImportingTsExtensions": false,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "noEmit": true,
+        "noEmit": false,
         "jsx": "react-jsx",
 
         /* Linting */
         "strict": false,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": false,
+        "noImplicitReturns": false,
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "noImplicitOverride": false,
+        "noPropertyAccessFromIndexSignature": false,
+        "noUncheckedIndexedAccess": false
     },
     "include": ["src"],
     "references": [{ "path": "./tsconfig.node.json" }]

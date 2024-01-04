@@ -1,14 +1,8 @@
-import { Logo, FormRow, SubmitBtn } from "../components";
-import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
-import {
-    Link,
-    Form,
-    redirect,
-    useActionData,
-    useNavigate,
-} from "react-router-dom";
-import customFetch from "../utils/customFetch";
-import { toast } from "react-toastify";
+import { Logo, FormRow, SubmitBtn } from '../components';
+import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
+import { Link, Form, redirect, useNavigate } from 'react-router-dom';
+import customFetch from '../utils/customFetch';
+import { toast } from 'react-toastify';
 
 export const action =
     (queryClient) =>
@@ -24,10 +18,10 @@ export const action =
     } */
 
         try {
-            await customFetch.post("/auth/login", data);
+            await customFetch.post('/auth/login', data);
             queryClient.invalidateQueries();
-            toast.success("Logged in successfully!");
-            return redirect("/dashboard");
+            toast.success('Logged in successfully!');
+            return redirect('/dashboard');
         } catch (error) {
             toast.error(error?.response?.data?.msg || error.msg);
             return error;
@@ -40,14 +34,14 @@ const Login = () => {
 
     const loginTestUser = async () => {
         const data = {
-            email: "test@test.com",
-            password: "secret123",
+            email: 'test@test.com',
+            password: 'secret123',
         };
 
         try {
-            await customFetch.post("/auth/login", data);
-            toast.success("Test user logged in successfully!");
-            navigate("/dashboard");
+            await customFetch.post('/auth/login', data);
+            toast.success('Test user logged in successfully!');
+            navigate('/dashboard');
         } catch (error) {
             toast.error(error?.response?.data?.msg || error.msg);
         }
@@ -55,7 +49,7 @@ const Login = () => {
 
     return (
         <Wrapper>
-            <Form className="form" method="post" action="">
+            <Form className='form' method='post' action=''>
                 <Logo />
                 <h4>Login</h4>
                 {/* <p
@@ -68,19 +62,19 @@ const Login = () => {
                 >
                     {errors?.msg}
                 </p> */}
-                <FormRow type="email" name="email" />
-                <FormRow type="password" name="password" />
+                <FormRow type='email' name='email' />
+                <FormRow type='password' name='password' />
                 <SubmitBtn />
                 <button
-                    type="button"
-                    className="btn btn-block"
+                    type='button'
+                    className='btn btn-block'
                     onClick={loginTestUser}
                 >
                     Explore the App
                 </button>
                 <p>
                     Don&apos;t have an account? &nbsp;
-                    <Link to="/register">Register</Link>
+                    <Link to='/register'>Register</Link>
                 </p>
             </Form>
         </Wrapper>

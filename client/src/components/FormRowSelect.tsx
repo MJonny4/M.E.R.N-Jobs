@@ -1,4 +1,15 @@
-const FormRowSelect = ({ name, labelText, list, defaultValue, onChange }) => {
+import React from "react";
+
+type FormRowProps = {
+    type?: string;
+    name?: string;
+    labelText?: string;
+    defaultValue?: string;
+    list?: string[];
+    onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+};
+
+const FormRowSelect = ({ name, labelText, list, defaultValue, onChange }: FormRowProps) => {
     return (
         <div className="form-row">
             <label htmlFor={name} className="form-label">

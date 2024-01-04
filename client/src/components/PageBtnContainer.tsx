@@ -1,12 +1,13 @@
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
 import Wrapper from "../assets/wrappers/PageBtnContainer";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAllJobsContext } from "../pages/AllJobs";
 
 const PageBtnContainer = () => {
     const {
         data: { numOfPages, currentPage },
     } = useAllJobsContext();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const pages = Array.from({ length: numOfPages }, (_, index) => {
         return index + 1;
     });

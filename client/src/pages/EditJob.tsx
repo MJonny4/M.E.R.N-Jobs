@@ -1,10 +1,10 @@
-import { FormRow, FormRowSelect, SubmitBtn } from "../components";
-import Wrapper from "../assets/wrappers/DashboardFormPage";
-import { useLoaderData, useParams } from "react-router-dom";
-import { JOB_STATUS, JOB_TYPE } from "../../../utils/constants";
-import { Form, redirect } from "react-router-dom";
-import { toast } from "react-toastify";
-import customFetch from "../utils/customFetch";
+import { FormRow, FormRowSelect, SubmitBtn } from '../components';
+import Wrapper from '../assets/wrappers/DashboardFormPage';
+import { useLoaderData } from 'react-router-dom';
+import { JOB_STATUS, JOB_TYPE } from '../../../utils/constants';
+import { Form, redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import customFetch from '../utils/customFetch';
 
 export const loader = async ({ params }) => {
     try {
@@ -12,7 +12,7 @@ export const loader = async ({ params }) => {
         return data;
     } catch (error) {
         toast.error(error?.response?.data?.msg);
-        return redirect("/dashboard/all-jobs");
+        return redirect('/dashboard/all-jobs');
     }
 };
 
@@ -23,9 +23,9 @@ export const action =
         const data = Object.fromEntries(formData);
         try {
             await customFetch.patch(`/jobs/${params.id}`, data);
-            queryClient.invalidateQueries(["jobs"]);
-            toast.success("Job edited successfully");
-            return redirect("/dashboard/all-jobs");
+            queryClient.invalidateQueries(['jobs']);
+            toast.success('Job edited successfully');
+            return redirect('/dashboard/all-jobs');
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;
@@ -33,38 +33,39 @@ export const action =
     };
 
 const EditJob = () => {
+    // @ts-expect-error - params is not defined
     const { job } = useLoaderData();
 
     return (
         <Wrapper>
-            <Form method="post" className="form">
-                <h4 className="form-title">edit job</h4>
-                <div className="form-center">
+            <Form method='post' className='form'>
+                <h4 className='form-title'>edit job</h4>
+                <div className='form-center'>
                     <FormRow
-                        type="text"
-                        name="position"
+                        type='text'
+                        name='position'
                         defaultValue={job?.position}
                     />
                     <FormRow
-                        type="text"
-                        name="company"
+                        type='text'
+                        name='company'
                         defaultValue={job?.company}
                     />
                     <FormRow
-                        type="text"
-                        name="jobLocation"
+                        type='text'
+                        name='jobLocation'
                         defaultValue={job?.jobLocation}
-                        labelText={"job location"}
+                        labelText={'job location'}
                     />
                     <FormRowSelect
-                        name={"jobStatus"}
-                        labelText={"job status"}
+                        name={'jobStatus'}
+                        labelText={'job status'}
                         defaultValue={job?.jobStatus}
                         list={Object.values(JOB_STATUS)}
                     />
                     <FormRowSelect
-                        name={"jobType"}
-                        labelText={"job type"}
+                        name={'jobType'}
+                        labelText={'job type'}
                         defaultValue={job?.jobType}
                         list={Object.values(JOB_TYPE)}
                     />
