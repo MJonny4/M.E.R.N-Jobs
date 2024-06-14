@@ -2,6 +2,7 @@ import Wrapper from "../assets/wrappers/StatItem";
 
 const StatItem = ({ count, title, icon, color, bcg }) => {
     return (
+        //@ts-expect-error
         <Wrapper color={color} bcg={bcg}>
             <header>
                 <span className="count">{count}</span>

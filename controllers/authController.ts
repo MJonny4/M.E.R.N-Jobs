@@ -1,31 +1,32 @@
 import bcrypt from "bcryptjs";
 import { StatusCodes } from "http-status-codes";
+import { Request, Response } from "express";
 
 // Models
-import User from "../models/userModel.js";
+import User, { IUser } from "../models/userModel";
 
 // Utils
-import { comparePasswords, hashPassword } from "../utils/passwordUtils.js";
+import { comparePasswords, hashPassword } from "../utils/passwordUtils";
 
 // Errors
-import { UnauthorizedError } from "../errors/customError.js";
-import { createJWT } from "../utils/tokenUtils.js";
+import { UnauthorizedError } from "../errors/customError";
+import { createJWT } from "../utils/tokenUtils";
 
-export const register = async (req, res) => {
+export const register = async (req: Request, res: Response): Promise<void> => {
     const isFirstAccount = (await User.countDocuments()) === 0;
     req.body.role = isFirstAccount ? "admin" : "user";
 
     const hashedPassword = await hashPassword(req.body.password);
     req.body.password = hashedPassword;
 
-    const user = await User.create(req.body);
+    const user: IUser = await User.create(req.body);
     res.status(StatusCodes.CREATED).json({
         msg: "User created successfully",
     });
 };
 
-export const login = async (req, res) => {
-    const user = await User.findOne({ email: req.body.email });
+export const login = async (req: Request, res: Response): Promise<void> => {
+    const user: IUser | null = await User.findOne({ email: req.body.email });
 
     const isValidUser =
         user && (await comparePasswords(req.body.password, user.password));
@@ -48,7 +49,7 @@ export const login = async (req, res) => {
     });
 };
 
-export const logout = async (req, res) => {
+export const logout = async (req: Request, res: Response): Promise<void> => {
     res.cookie("token", "logout", {
         httpOnly: true,
         expires: new Date(Date.now()),

@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "strict": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": false,
+        "noImplicitReturns": false,
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "noImplicitOverride": false,
+        "noPropertyAccessFromIndexSignature": false,
+        "noUncheckedIndexedAccess": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "strictFunctionTypes": false,
+        "target": "ES2022",
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+    }
+}

@@ -1,7 +1,10 @@
 import { StatusCodes } from "http-status-codes";
 
 export class NotFoundError extends Error {
-    constructor(message) {
+    name: string;
+    statusCode: StatusCodes;
+
+    constructor(message: string) {
         super(message);
         this.name = "NotFoundError";
         this.statusCode = StatusCodes.NOT_FOUND;
@@ -9,7 +12,10 @@ export class NotFoundError extends Error {
 }
 
 export class BadRequestError extends Error {
-    constructor(message) {
+    name: string;
+    statusCode: StatusCodes;
+
+    constructor(message: string) {
         super(message);
         this.name = "BadRequestError";
         this.statusCode = StatusCodes.BAD_REQUEST;
@@ -17,7 +23,10 @@ export class BadRequestError extends Error {
 }
 
 export class UnauthorizedError extends Error {
-    constructor(message) {
+    name: string;
+    statusCode: StatusCodes;
+
+    constructor(message: string) {
         super(message);
         this.name = "UnauthorizedError";
         this.statusCode = StatusCodes.UNAUTHORIZED;
@@ -25,7 +34,10 @@ export class UnauthorizedError extends Error {
 }
 
 export class ForbiddenError extends Error {
-    constructor(message) {
+    name: string;
+    statusCode: StatusCodes;
+
+    constructor(message: string) {
         super(message);
         this.name = "ForbiddenError";
         this.statusCode = StatusCodes.FORBIDDEN;

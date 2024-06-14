@@ -1,8 +1,8 @@
 import { StatusCodes } from "http-status-codes";
-import User from "../models/userModel.js";
-import Job from "../models/jobModel.js";
+import User from "../models/userModel";
+import Job from "../models/jobModel";
 import cloudinary from "cloudinary";
-import { formatImage } from "../middleware/multerMiddleware.js";
+import { formatImage } from "../middleware/multerMiddleware";
 
 export const getCurrentUser = async (req, res) => {
     const user = await User.findById(req.user.userId).select("-password");

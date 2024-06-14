@@ -27,3 +27,8 @@ dist-ssr
 .vscode/*
 .env
 package-lock.json
+bun.lockb
+jobs.json
+populate.ts
+z.ps1
+.vercel

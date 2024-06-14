@@ -34,8 +34,8 @@ const Login = () => {
 
     const loginTestUser = async () => {
         const data = {
-            email: 'test@test.com',
-            password: 'secret123',
+            email: 'fstrakerj@surveymonkey.com',
+            password: 'Nf$2K{.]z#+}xvqECnW^ePGT43Zy7)sAjHF5IwU(R%QLpt9mc&[*,gaB6-XbDhkr',
         };
 
         try {
